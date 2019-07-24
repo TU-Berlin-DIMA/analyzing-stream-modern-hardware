@@ -59,6 +59,7 @@
 	<modules>
 		<module>yahoo-bench-flink</module>
 		<module>yahoo-bench-spark</module>
+		<module>lrb-flink</module>
 	</modules>
 
 </project>

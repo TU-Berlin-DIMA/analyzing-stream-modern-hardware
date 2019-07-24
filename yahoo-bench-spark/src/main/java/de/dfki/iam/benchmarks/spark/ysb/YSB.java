@@ -180,17 +180,12 @@ public class YSB {
 					}
 				}, Durations.seconds(2));
 
-		out.foreachRDD(new VoidFunction2<JavaPairRDD<UUID, Integer>, Time>() {
-			@Override
-			public void call(JavaPairRDD<UUID, Integer> rrd, Time time) throws Exception {
-				rrd.foreach(new VoidFunction<Tuple2<UUID, Integer>>() {
-					@Override
-					public void call(Tuple2<UUID, Integer> a) throws Exception {
+		out.foreachRDD((VoidFunction2<JavaPairRDD<UUID, Integer>, Time>) (rrd, time) ->
+				rrd.foreach((VoidFunction<Tuple2<UUID, Integer>>) a -> {
 
-					}
-				});
-			}
-		});
+				}
+			)
+		);
 
 		ssc.start();
 		ssc.awaitTermination();
